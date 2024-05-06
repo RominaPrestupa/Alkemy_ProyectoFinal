@@ -1,0 +1,38 @@
+{% extends 'base/index.html' %}
+
+{% block contenido %}
+<div class="container">
+
+    <h4 class="text-center p-4">Proveedores</h4>
+
+    <a class="icon-link" href="{% url 'alta-proveedor' %}">
+        Agregar nuevo proveedor
+    </a>
+
+    <table class='table table-striped mt-4'>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Razón Social</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">DNI</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for proveedor in proveedores %}
+            <tr>
+                <!--<th scope = 'row'>{{ forloop.counter }}</th>-->
+                <td>{{ proveedor.id }}</td>
+                <td>{{ proveedor.razon_social }}</td>
+                <td>{{ proveedor.nombre }}</td>
+                <td>{{ proveedor.apellido }}</td>
+                <td>{{ proveedor.dni }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock%}

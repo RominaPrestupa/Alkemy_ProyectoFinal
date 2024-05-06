@@ -1,0 +1,45 @@
+{% extends 'base/index.html' %}
+
+{% block titulo %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h4 class="text-center m-4">Alta de proveedores</h4>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 col-lg-6">
+            <form action='' method='POST'>
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Razon social</label>
+                    <input type="text" class="form-control" id="Razon Social" name='Razon Social'>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="Nombre" name='Nombre'>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" id="Apellido" name='Apellido'>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">DNI</label>
+                    <input type="number" class="form-control" id="DNI" name='DNI'>
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                    <button type="submit" class="btn btn-primary m-1">Guardar</button>
+                </div>
+
+            </form>
+            <a class = "m-1" href="{% url 'listado-proveedores' %}">Ir al listado</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

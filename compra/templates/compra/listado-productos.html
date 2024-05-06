@@ -1,0 +1,45 @@
+{% extends 'base/index.html' %}
+
+{% block contenido %}
+<div class="container">
+
+    <h4 class="text-center p-4">Productos</h4>
+
+    <a class="icon-link" href="{% url 'agregar-producto' %}">
+        Agregar nuevo producto
+    </a>
+
+    <table class='table table-striped mt-4'>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre del Producto</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Proveedor</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for producto in productos %}
+            <tr>
+                <!--<th scope = 'row'>{{ forloop.counter }}</th>-->
+                <td>{{ producto.id }}</td>
+                <td>{{ producto.nombre_producto }}</td>
+                <td>{{ producto.precio }}</td>
+                <td>{{ producto.stock_actual }}</td>
+                <td>{{ producto.proveedor }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="icon-link" href="{% url 'index' %}">
+        Volver
+        <svg class="bi" aria-hidden="true">
+            <use xlink:href="#arrow-right"></use>
+        </svg>
+    </a>
+
+</div>
+{% endblock%}
