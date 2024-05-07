@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, permission_required
 from compra.models import Producto, Proveedor
-from django.contrib import messages
+#from django.contrib import messages
 from .forms import ProductoForm, ProveedorForm
 
 
@@ -9,7 +9,6 @@ from .forms import ProductoForm, ProveedorForm
 # vista para el listado productos:
 @login_required
 def listar_productos(request):
-    mostrar_navbar = True
     productos = Producto.objects.all()
     return render(request, 'compra/listado-productos.html', {'productos':productos})
 
@@ -26,32 +25,25 @@ def listar_proveedores(request):
 @permission_required('compra.add_producto', raise_exception=True)
 def agregar_producto(request):
         if request.method == "POST":
-            nombre = request.POST.get('nombre_producto')
-            precio = request.POST.get('precio')
-            stock = request.POST.get('stock')
-            id_proveedor = request.POST.get('id_proveedor')
+            producto_form = ProductoForm(request.POST)
+            if producto_form.is_valid():
+                producto_form.save(commit=True)
+                return redirect('listado-productos')
+        else:
+            producto_form = ProductoForm()
+        return render(request, 'compra/form-productos.html', {'producto_form': producto_form})
 
-            proveedor = get_object_or_404(Proveedor, id = id_proveedor)
-            
-            producto = Producto.objects.create(
-                 nombre_producto = nombre, 
-                 precio = precio, 
-                 stock_actual = stock, 
-                 proveedor = proveedor)
-            return redirect('listado-productos') 
-        proveedores = Proveedor.objects.all()
-        return render(request,'compra/form-productos.html', {'proveedores': proveedores})
     
 
 @login_required
 @permission_required('compra.add_proveedor', raise_exception=True)
 def agregar_proveedor(request):
-        if request.method == "POST":
-            razon_social = request.POST.get('Razon Social')
-            nombre = request.POST.get('Nombre')
-            apellido = request.POST.get('Apellido')
-            documento_identidad = request.POST.get('DNI')
-            proveedor = Proveedor.objects.create(razon_social = razon_social, nombre = nombre, apellido = apellido, dni = documento_identidad)
-            return redirect('listado-proveedores') 
-        return render(request,'compra/form-proveedores.html')
+    if request.method == "POST":
+        proveedor_form = ProveedorForm(request.POST)
+        if proveedor_form.is_valid():
+            proveedor_form.save(commit=True)
+            return redirect('listado-proveedores')
+    else:
+        proveedor_form = ProveedorForm()
+    return render(request, 'compra/form-proveedores.html', {'proveedor_form':proveedor_form})
 
