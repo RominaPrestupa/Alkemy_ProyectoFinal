@@ -1,12 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, permission_required
 from compra.models import Producto, Proveedor
+from django.contrib import messages
+#from .forms import ProductoForm, ProveedorForm
 
-""" 
-def home(request):
-    mostrar_navbar = True
-    return render(request, 'compra/index.html')
- """
 
 #LEER
 # vista para el listado productos:
@@ -26,34 +23,35 @@ def listar_proveedores(request):
 
 #CREATE
 @login_required
-@permission_required('compra.add_proveedor', raise_exception=True)
-def agregar_proveedor(request):
-        if request.method == "POST":
-            print(request)
-            razon_social = request.POST.get('Razon Social')
-            nombre = request.POST.get('Nombre')
-            apellido = request.POST.get('Apellido')
-            documento_identidad = request.POST.get('DNI')
-            proveedor = Proveedor.objects.create(razon_social = razon_social, nombre = nombre, apellido = apellido, dni = documento_identidad)
-            return redirect('listado-proveedores') 
-        return render(request,'compra/form-proveedores.html') 
-    
-
-@login_required
 @permission_required('compra.add_producto', raise_exception=True)
 def agregar_producto(request):
         if request.method == "POST":
-            nombre = request.POST.get('Nombre Producto')
-            precio = request.POST.get('Precio')
-            stock = request.POST.get('Stock')
-            proveedor = request.POST.get('Proveedor')
+            nombre = request.POST.get('nombre_producto')
+            precio = request.POST.get('precio')
+            stock = request.POST.get('stock')
+            id_proveedor = request.POST.get('id_proveedor')
 
-            proveedor = get_object_or_404(Proveedor, razon_social = proveedor)
+            proveedor = get_object_or_404(Proveedor, id = id_proveedor)
             
             producto = Producto.objects.create(
                  nombre_producto = nombre, 
                  precio = precio, 
                  stock_actual = stock, 
                  proveedor = proveedor)
-            return redirect('listado-productos')
-        return render(request,'compra/form-productos.html') 
+            return redirect('listado-productos') 
+        proveedores = Proveedor.objects.all()
+        return render(request,'compra/form-productos.html', {'proveedores': proveedores})
+    
+
+@login_required
+@permission_required('compra.add_proveedor', raise_exception=True)
+def agregar_proveedor(request):
+        if request.method == "POST":
+            razon_social = request.POST.get('Razon Social')
+            nombre = request.POST.get('Nombre')
+            apellido = request.POST.get('Apellido')
+            documento_identidad = request.POST.get('DNI')
+            proveedor = Proveedor.objects.create(razon_social = razon_social, nombre = nombre, apellido = apellido, dni = documento_identidad)
+            return redirect('listado-proveedores') 
+        return render(request,'compra/form-proveedores.html')
+
