@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, permission_required
 from compra.models import Producto, Proveedor
 from django.contrib import messages
-#from .forms import ProductoForm, ProveedorForm
+from .forms import ProductoForm, ProveedorForm
 
 
 #LEER
