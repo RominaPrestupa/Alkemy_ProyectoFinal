@@ -1,7 +1,6 @@
 from django.contrib import admin
 from compra.models import Producto, Proveedor
 
-# Register your models here.
 @admin.register(Producto)
 class ProductoAdmin(admin.ModelAdmin):
     list_display = ['nombre_producto','id', 'precio', 'stock_actual']

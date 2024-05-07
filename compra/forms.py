@@ -1,7 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from compra.models import Producto, Proveedor
-#from decimal import Decimal
 
 
 class ProductoForm(forms.ModelForm):

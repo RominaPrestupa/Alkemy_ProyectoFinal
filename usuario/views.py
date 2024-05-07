@@ -3,7 +3,6 @@ from django.contrib.auth import authenticate, login, logout
 
 
 def login_view(request):
-    mostrar_navbar = False
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
@@ -18,5 +17,5 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect(reverse('index'))
+    return render(request, 'usuario/logout.html')
 
