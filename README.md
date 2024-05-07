@@ -35,7 +35,7 @@ El proyecto consiste en un sistema de gestión que permite llevar un registro co
    
 `python manage.py migrate`
 
-4. Crea un superusuario ejecutando `python manage.py createsuperuser` y sigue las instrucciones para completar la información del usuario.
+4. Creá un superusuario ejecutando `python manage.py createsuperuser` y seguí las instrucciones para completar la información del usuario.
 
 5. Iniciá el servidor de desarrollo:
 
@@ -48,7 +48,6 @@ El proyecto consiste en un sistema de gestión que permite llevar un registro co
 8. Agregá, consultá, editá o eliminá productos y proveedores existentes para una rápida referencia.
 <br><br>
 
-----               
 
 ### Tecnologías utilizadas
 
@@ -56,3 +55,5 @@ El proyecto consiste en un sistema de gestión que permite llevar un registro co
 - Python
 - Django
 - Bootstrap (para el diseño responsive)
+
+----  
