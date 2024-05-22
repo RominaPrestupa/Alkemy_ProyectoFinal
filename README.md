@@ -12,7 +12,7 @@ Este trabajo se enmarcó en la edición 2024 del bootcamp de POO Python.
 
 El proyecto que vas a encontrar acá es el resultado final de 10 intensas semanas de cursada.  Si bien comencé ya teniendo un background en lógica de programación y Python orientado a la Ciencia de Datos, en este bootcamp logré adquirir nociones fundamentales sobre programación orientada a objetos, Django, Jinja, SQLite3, entre otras. 
 
-El proyecto consiste en un sistema de gestión que permite llevar un registro completo de proveedores y productos,  desarrollado integramente en Python 3.11.0, con el framework Django 5.0.4. Proporciona funcionalidades CRUD (*Crear, Leer, Actualizar, Eliminar*) para productos y proveedores, así como la autenticación de usuarios y/o gestión de permisos.
+El proyecto consiste en un sistema de gestión que permite llevar un registro completo de proveedores y productos,  desarrollado en Python y HTML, con el framework Django. Proporciona funcionalidades CRUD (*Crear, Leer, Actualizar, Eliminar*) para productos y proveedores, así como la autenticación de usuarios y/o gestión de permisos.
 <br><br>
 
 ### Características
