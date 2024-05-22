@@ -54,6 +54,7 @@ El proyecto consiste en un sistema de gestión que permite llevar un registro co
                 
 - Python
 - Django
+- HTML
 - Bootstrap (para el diseño responsive)
 
 ----  
